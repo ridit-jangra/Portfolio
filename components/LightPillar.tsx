@@ -1,5 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
-import * as THREE from 'three';
+"use client";
+
+import React, { useRef, useEffect, useState } from "react";
+import * as THREE from "three";
 
 interface LightPillarProps {
   topColor?: string;
@@ -12,23 +14,23 @@ interface LightPillarProps {
   pillarWidth?: number;
   pillarHeight?: number;
   noiseIntensity?: number;
-  mixBlendMode?: React.CSSProperties['mixBlendMode'];
+  mixBlendMode?: React.CSSProperties["mixBlendMode"];
   pillarRotation?: number;
 }
 
 const LightPillar: React.FC<LightPillarProps> = ({
-  topColor = '#5227FF',
-  bottomColor = '#FF9FFC',
+  topColor = "#5227FF",
+  bottomColor = "#FF9FFC",
   intensity = 1.0,
   rotationSpeed = 0.3,
   interactive = false,
-  className = '',
+  className = "",
   glowAmount = 0.005,
   pillarWidth = 3.0,
   pillarHeight = 0.4,
   noiseIntensity = 0.5,
-  mixBlendMode = 'screen',
-  pillarRotation = 0
+  mixBlendMode = "screen",
+  pillarRotation = 0,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
@@ -43,11 +45,12 @@ const LightPillar: React.FC<LightPillarProps> = ({
 
   // Check WebGL support
   useEffect(() => {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    const canvas = document.createElement("canvas");
+    const gl =
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
     if (!gl) {
       setWebGLSupported(false);
-      console.warn('WebGL is not supported in this browser');
+      console.warn("WebGL is not supported in this browser");
     }
   }, []);
 
@@ -69,13 +72,13 @@ const LightPillar: React.FC<LightPillarProps> = ({
       renderer = new THREE.WebGLRenderer({
         antialias: false,
         alpha: true,
-        powerPreference: 'high-performance',
-        precision: 'lowp',
+        powerPreference: "high-performance",
+        precision: "lowp",
         stencil: false,
-        depth: false
+        depth: false,
       });
     } catch (error) {
-      console.error('Failed to create WebGL renderer:', error);
+      console.error("Failed to create WebGL renderer:", error);
       setWebGLSupported(false);
       return;
     }
@@ -234,11 +237,11 @@ const LightPillar: React.FC<LightPillarProps> = ({
         uPillarWidth: { value: pillarWidth },
         uPillarHeight: { value: pillarHeight },
         uNoiseIntensity: { value: noiseIntensity },
-        uPillarRotation: { value: pillarRotation }
+        uPillarRotation: { value: pillarRotation },
       },
       transparent: true,
       depthWrite: false,
-      depthTest: false
+      depthTest: false,
     });
     materialRef.current = material;
 
@@ -265,7 +268,9 @@ const LightPillar: React.FC<LightPillarProps> = ({
     };
 
     if (interactive) {
-      container.addEventListener('mousemove', handleMouseMove, { passive: true });
+      container.addEventListener("mousemove", handleMouseMove, {
+        passive: true,
+      });
     }
 
     // Animation loop with fixed timestep
@@ -274,7 +279,13 @@ const LightPillar: React.FC<LightPillarProps> = ({
     const frameTime = 1000 / targetFPS;
 
     const animate = (currentTime: number) => {
-      if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current) return;
+      if (
+        !materialRef.current ||
+        !rendererRef.current ||
+        !sceneRef.current ||
+        !cameraRef.current
+      )
+        return;
 
       const deltaTime = currentTime - lastTime;
 
@@ -297,7 +308,12 @@ const LightPillar: React.FC<LightPillarProps> = ({
       }
 
       resizeTimeout = window.setTimeout(() => {
-        if (!rendererRef.current || !materialRef.current || !containerRef.current) return;
+        if (
+          !rendererRef.current ||
+          !materialRef.current ||
+          !containerRef.current
+        )
+          return;
         const newWidth = containerRef.current.clientWidth;
         const newHeight = containerRef.current.clientHeight;
         rendererRef.current.setSize(newWidth, newHeight);
@@ -305,13 +321,13 @@ const LightPillar: React.FC<LightPillarProps> = ({
       }, 150);
     };
 
-    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
 
     // Cleanup
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       if (interactive) {
-        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener("mousemove", handleMouseMove);
       }
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
@@ -348,7 +364,7 @@ const LightPillar: React.FC<LightPillarProps> = ({
     pillarHeight,
     noiseIntensity,
     pillarRotation,
-    webGLSupported
+    webGLSupported,
   ]);
 
   if (!webGLSupported) {
@@ -363,7 +379,11 @@ const LightPillar: React.FC<LightPillarProps> = ({
   }
 
   return (
-    <div ref={containerRef} className={`w-full h-full absolute top-0 left-0 ${className}`} style={{ mixBlendMode }} />
+    <div
+      ref={containerRef}
+      className={`w-full h-full absolute top-0 left-0 ${className}`}
+      style={{ mixBlendMode }}
+    />
   );
 };
 
