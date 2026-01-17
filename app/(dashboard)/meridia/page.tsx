@@ -7,19 +7,6 @@ import { GithubIcon, ViewIcon } from "lucide-react";
 export default function Page() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-indigo-400 py-25 relative">
-      <div className="absolute inset-0 overflow-hidden">
-        <Prism
-          animationType="rotate"
-          timeScale={0.5}
-          height={3.5}
-          baseWidth={5.5}
-          scale={3.6}
-          hueShift={0}
-          colorFrequency={1}
-          noise={0.3}
-          glow={1}
-        />
-      </div>
       <div className="flex items-center mt-12 px-4 z-10">
         <div className="flex flex-col gap-5">
           <div className="text-center">

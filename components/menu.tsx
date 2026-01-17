@@ -28,7 +28,7 @@ export function Menu() {
   };
 
   return (
-    <div className="fixed z-10 w-full flex items-center justify-between h-12 p-2">
+    <div className="fixed z-100 w-full flex items-center justify-between h-12 p-2">
       <span
         className="font-employed text-4xl cursor-pointer hover:underline"
         onClick={() => handleNavigate("/home")}

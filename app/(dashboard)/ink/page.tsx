@@ -6,18 +6,6 @@ import { GithubIcon, ViewIcon } from "lucide-react";
 export default function Page() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen relative bg-[#FEEBDC] py-25">
-      <div className="absolute inset-0 overflow-hidden">
-        <PixelSnow
-          color="#ffffff"
-          flakeSize={0.01}
-          minFlakeSize={1.25}
-          pixelResolution={200}
-          speed={1.25}
-          density={0.3}
-          direction={125}
-          brightness={1}
-        />
-      </div>
       <div className="flex items-center mt-12 px-4 z-10">
         <div className="flex flex-col gap-5">
           <div className="text-center">

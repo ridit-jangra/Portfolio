@@ -48,7 +48,7 @@ export default function Page() {
           damping={1}
           fadeOut={1}
           ease="power3.out"
-          className="grid grid-cols-4"
+          // className="flex items-center justify-center"
         />
       </div>
     </div>

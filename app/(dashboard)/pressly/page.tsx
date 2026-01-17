@@ -1,33 +1,11 @@
 "use client";
 
-import PixelBlast from "@/components/PixelBlast";
 import { GithubIcon, ViewIcon } from "lucide-react";
 
 export default function Page() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-emerald-400 py-25 relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <PixelBlast
-          variant="circle"
-          pixelSize={6}
-          color="#B19EEF"
-          patternScale={3}
-          patternDensity={1.2}
-          pixelSizeJitter={0.5}
-          enableRipples
-          rippleSpeed={0.4}
-          rippleThickness={0.12}
-          rippleIntensityScale={1.5}
-          liquid
-          liquidStrength={0.12}
-          liquidRadius={1.2}
-          liquidWobbleSpeed={5}
-          speed={0.6}
-          edgeFade={0.25}
-          transparent
-        />
-      </div>
-      <div className="flex items-center mt-12 px-4 z-10">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-emerald-400 py-25">
+      <div className="flex items-center mt-12 px-4">
         <div className="flex flex-col gap-5">
           <div className="text-center">
             <p className="font-employed text-9xl">Pressly</p>
