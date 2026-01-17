@@ -1,7 +1,7 @@
 import { Menu } from "@/components/menu";
-import { JSX } from "react";
+import { ReactNode } from "react";
 
-export default function Layout({ children }: { children: JSX.Element }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="text-foreground min-h-screen w-full">
       <Menu />
