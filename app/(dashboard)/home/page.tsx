@@ -1,11 +1,10 @@
 "use client";
 
 import LetterGlitch from "@/components/LetterGlitch";
-import Lightning from "@/components/Lightning";
-import LightPillar from "@/components/LightPillar";
 import PixelBlast from "@/components/PixelBlast";
 import PixelSnow from "@/components/PixelSnow";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRightIcon } from "lucide-react";
 import { useRef } from "react";
 
 export default function Page() {
@@ -138,7 +137,6 @@ export default function Page() {
           className="text-[20rem] font-employed select-none z-10 text-white"
           style={{
             y: yParallaxMeridia,
-            // scale: scaleProgressMeridia,
           }}
         >
           Meridia
@@ -153,6 +151,31 @@ export default function Page() {
         >
           A Powerful code editor.
         </motion.p>
+
+        <motion.div className="flex items-center justify-center">
+          <a href="https://github.com/ridit-jangra/Meridia" target="_blank">
+            <motion.button
+              className="text-[3rem] rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white  font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 z-10"
+              style={{
+                y: yParallaxMeridia,
+                scale: scaleProgressMeridia,
+              }}
+            >
+              Github <ArrowRightIcon />
+            </motion.button>
+          </a>
+          <a href="https://meridia.dev" target="_blank">
+            <motion.button
+              className="text-[3rem] bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 rounded-full z-10 text-white/80"
+              style={{
+                y: yParallaxMeridia,
+                scale: scaleProgressMeridia,
+              }}
+            >
+              Try now <ArrowRightIcon />
+            </motion.button>
+          </a>
+        </motion.div>
       </section>
 
       <section
@@ -190,6 +213,29 @@ export default function Page() {
         >
           A story writing app.
         </motion.p>
+
+        <motion.div className="flex items-center justify-center gap-12">
+          <a href="https://github.com/ridit-jangra/Ink" target="_blank">
+            <motion.button
+              className="text-[2.5rem] rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white  font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 z-10"
+              style={{
+                y: yParallaxMeridia,
+              }}
+            >
+              Github <ArrowRightIcon />
+            </motion.button>
+          </a>
+          <a href="https://ink.ridit.space" target="_blank">
+            <motion.button
+              className="text-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 rounded-full z-10 text-white/80"
+              style={{
+                y: yParallaxMeridia,
+              }}
+            >
+              Try now <ArrowRightIcon />
+            </motion.button>
+          </a>
+        </motion.div>
       </section>
 
       <section
@@ -236,6 +282,29 @@ export default function Page() {
         >
           A powerful website builder.
         </motion.p>
+
+        <motion.div className="flex items-center justify-center gap-12">
+          <a href="https://github.com/ridit-jangra/Pressly" target="_blank">
+            <motion.button
+              className="text-[2.5rem] rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white  font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 z-10"
+              style={{
+                y: yParallaxMeridia,
+              }}
+            >
+              Github <ArrowRightIcon />
+            </motion.button>
+          </a>
+          <a href="https://pressly.ridit.space" target="_blank">
+            <motion.button
+              className="text-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 rounded-full z-10 text-white/80"
+              style={{
+                y: yParallaxMeridia,
+              }}
+            >
+              Try now <ArrowRightIcon />
+            </motion.button>
+          </a>
+        </motion.div>
       </section>
     </div>
   );
