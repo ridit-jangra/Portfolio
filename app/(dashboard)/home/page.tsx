@@ -1,54 +1,68 @@
 "use client";
 
-import LetterGlitch from "@/components/LetterGlitch";
-import PixelBlast from "@/components/PixelBlast";
-import PixelSnow from "@/components/PixelSnow";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRightIcon } from "lucide-react";
-import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Page() {
-  const projectsRef = useRef(null);
-  const meridiaRef = useRef(null);
-
-  const { scrollYProgress: projectsScroll } = useScroll({
-    target: projectsRef,
-    offset: ["start end", "end start"],
-  });
-
-  const { scrollYProgress: meridiaScroll } = useScroll({
-    target: meridiaRef,
-    offset: ["start end", "end start"],
-  });
-
-  const yParallaxProjects = useTransform(projectsScroll, [0, 1], [0, -200]);
-  const scaleProgressProjects = useTransform(
-    projectsScroll,
-    [0, 0.5],
-    [0.8, 1.2],
-  );
-
-  const yParallaxMeridia = useTransform(meridiaScroll, [0, 1], [0, -200]);
-  const scaleProgressMeridia = useTransform(
-    meridiaScroll,
-    [0, 0.5],
-    [0.8, 1.2],
-  );
-
   return (
-    <div className="min-h-[200vh] flex flex-col max-w-screen overflow-hidden">
-      <section className="h-screen flex items-center justify-center relative bg-[#F6AB00]">
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center relative z-10"
-        >
+    <div className="min-h-[200vh] flex flex-col w-full overflow-hidden">
+      <section className="min-h-screen flex items-center justify-center relative bg-[#F6AB00] overflow-hidden px-4">
+        {/* Blob 1 - Purple */}
+        <div
+          className="absolute w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full opacity-30 blur-3xl"
+          style={{
+            background: "#8B7BA8",
+            top: "-50px",
+            left: "-50px",
+          }}
+        />
+
+        {/* Blob 2 - Light Beige */}
+        <div
+          className="absolute w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full opacity-40 blur-3xl"
+          style={{
+            background: "#F5E6D3",
+            top: "50%",
+            right: "-50px",
+          }}
+        />
+
+        {/* Blob 3 - Deep Purple */}
+        <div
+          className="absolute w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full opacity-35 blur-3xl"
+          style={{
+            background: "#6B5B7B",
+            bottom: "-50px",
+            left: "30%",
+          }}
+        />
+
+        {/* Blob 4 - Warm Pink */}
+        <div
+          className="absolute w-80 h-80 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px] rounded-full opacity-35 blur-3xl"
+          style={{
+            background: "#E8A5C4",
+            top: "20%",
+            left: "40%",
+          }}
+        />
+
+        {/* Blob 5 - Lavender */}
+        <div
+          className="absolute w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full opacity-30 blur-3xl"
+          style={{
+            background: "#C8BADB",
+            top: "60%",
+            left: "10%",
+          }}
+        />
+
+        <div className="text-center relative z-10">
           <motion.img
             src="/feather.png"
             alt="feather"
             width={90}
-            className="absolute -right-100 -top-10 drop-shadow-xl blur-[0.6px]"
+            className="absolute -right-20 sm:-right-100 -top-5 sm:-top-10 drop-shadow-xl blur-[0.6px] w-12 sm:w-16 lg:w-[90px]"
             initial={{ opacity: 1, y: 0, x: 0 }}
             animate={{
               opacity: [1, 1, 0],
@@ -62,7 +76,7 @@ export default function Page() {
             src="/feather-1.png"
             alt="feather"
             width={90}
-            className="absolute right-120 top-10 drop-shadow-xl blur-[0.6px]"
+            className="absolute right-20 sm:right-120 top-5 sm:top-10 drop-shadow-xl blur-[0.6px] w-12 sm:w-16 lg:w-[90px]"
             initial={{ opacity: 1, y: 0, x: 0 }}
             animate={{
               opacity: [1, 1, 0],
@@ -76,7 +90,7 @@ export default function Page() {
             src="/feather-3.png"
             alt="feather"
             width={50}
-            className="absolute left-230 top-110 drop-shadow-xl blur-[0.6px] rotate-320 rotate-y-180"
+            className="absolute left-40 sm:left-230 top-20 sm:top-110 drop-shadow-xl blur-[0.6px] rotate-320 rotate-y-180 w-8 sm:w-10 lg:w-[50px]"
             initial={{ opacity: 1, y: 0, x: 0 }}
             animate={{
               opacity: [1, 1, 0],
@@ -87,224 +101,91 @@ export default function Page() {
             transition={{ duration: 4.2, delay: 1.1, ease: "easeInOut" }}
           />
 
-          <motion.p
-            className="text-[25rem] font-employed select-none drop-shadow-2xl"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
+          <p className="text-7xl sm:text-9xl md:text-[15rem] lg:text-[20rem] xl:text-[25rem] font-employed select-none drop-shadow-2xl">
             Ridit
-          </motion.p>
-        </motion.div>
-      </section>
-
-      <section
-        ref={projectsRef}
-        className="h-screen flex items-center justify-center relative overflow-hidden bg-[#FEEBDC]"
-      >
-        <motion.div
-          className="absolute inset-0"
-          style={{ y: yParallaxProjects }}
-        />
-
-        <motion.p
-          className="text-[20rem] font-employed select-none"
-          style={{
-            y: yParallaxProjects,
-            scale: scaleProgressProjects,
-          }}
-        >
-          Projects
-        </motion.p>
-      </section>
-
-      <section
-        ref={meridiaRef}
-        className="h-screen flex flex-col items-center justify-center relative overflow-hidden"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <LetterGlitch
-            glitchColors={["#2b4539", "#61dca3", "#61b3dc"]}
-            glitchSpeed={50}
-            centerVignette={true}
-            outerVignette={false}
-            smooth={true}
-            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789"
-          />
+          </p>
         </div>
+      </section>
 
-        <motion.p
-          className="text-[20rem] font-employed select-none z-10 text-white"
-          style={{
-            y: yParallaxMeridia,
-          }}
-        >
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#FEEBDC] px-4">
+        <p className="text-7xl sm:text-9xl md:text-[12rem] lg:text-[15rem] xl:text-[20rem] font-employed select-none text-center">
+          Projects
+        </p>
+      </section>
+
+      <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gray-900 px-4 py-12">
+        <p className="text-6xl sm:text-8xl md:text-[12rem] lg:text-[15rem] xl:text-[20rem] font-employed select-none z-10 text-white text-center mb-4 sm:mb-8">
           Meridia
-        </motion.p>
+        </p>
 
-        <motion.p
-          className="text-[6rem] font-employed select-none text-center z-10 text-white/80"
-          style={{
-            y: yParallaxMeridia,
-            scale: scaleProgressMeridia,
-          }}
-        >
+        <p className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-employed select-none text-center z-10 text-white/80 mb-6 sm:mb-12 px-4">
           A Powerful code editor.
-        </motion.p>
+        </p>
 
-        <motion.div className="flex items-center justify-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <a href="https://github.com/ridit-jangra/Meridia" target="_blank">
-            <motion.button
-              className="text-[3rem] rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white  font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 z-10"
-              style={{
-                y: yParallaxMeridia,
-                scale: scaleProgressMeridia,
-              }}
-            >
-              Github <ArrowRightIcon />
-            </motion.button>
+            <button className="text-xl sm:text-2xl lg:text-3xl rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-6 sm:px-8 cursor-pointer py-2 z-10 w-full sm:w-auto">
+              Github{" "}
+              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8" />
+            </button>
           </a>
           <a href="https://meridia.dev" target="_blank">
-            <motion.button
-              className="text-[3rem] bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 rounded-full z-10 text-white/80"
-              style={{
-                y: yParallaxMeridia,
-                scale: scaleProgressMeridia,
-              }}
-            >
-              Try now <ArrowRightIcon />
-            </motion.button>
+            <button className="text-xl sm:text-2xl lg:text-3xl bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-6 sm:px-8 cursor-pointer py-2 rounded-full z-10 text-white/80 w-full sm:w-auto">
+              Try now{" "}
+              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8" />
+            </button>
           </a>
-        </motion.div>
+        </div>
       </section>
 
-      <section
-        ref={meridiaRef}
-        className="h-screen flex flex-col items-center justify-center relative overflow-hidden bg-indigo-400"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <PixelSnow
-            color="#ffffff"
-            flakeSize={0.01}
-            minFlakeSize={1.25}
-            pixelResolution={200}
-            speed={1.25}
-            density={0.3}
-            direction={125}
-            brightness={1}
-          />
-        </div>
-
-        <motion.p
-          className="text-[20rem] font-employed select-none z-10 text-white"
-          style={{
-            y: yParallaxMeridia,
-          }}
-        >
+      <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-indigo-400 px-4 py-12">
+        <p className="text-6xl sm:text-8xl md:text-[12rem] lg:text-[15rem] xl:text-[20rem] font-employed select-none z-10 text-white text-center mb-4 sm:mb-8">
           Ink
-        </motion.p>
+        </p>
 
-        <motion.p
-          className="text-[6rem] font-employed select-none text-center z-10 text-white/80"
-          style={{
-            y: yParallaxMeridia,
-            scale: scaleProgressMeridia,
-          }}
-        >
+        <p className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-employed select-none text-center z-10 text-white/80 mb-6 sm:mb-12 px-4">
           A story writing app.
-        </motion.p>
+        </p>
 
-        <motion.div className="flex items-center justify-center gap-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12">
           <a href="https://github.com/ridit-jangra/Ink" target="_blank">
-            <motion.button
-              className="text-[2.5rem] rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white  font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 z-10"
-              style={{
-                y: yParallaxMeridia,
-              }}
-            >
-              Github <ArrowRightIcon />
-            </motion.button>
+            <button className="text-lg sm:text-xl lg:text-[2.5rem] rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-6 sm:px-8 cursor-pointer py-2 z-10 w-full sm:w-auto">
+              Github{" "}
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-7 lg:h-7" />
+            </button>
           </a>
           <a href="https://ink.ridit.space" target="_blank">
-            <motion.button
-              className="text-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 rounded-full z-10 text-white/80"
-              style={{
-                y: yParallaxMeridia,
-              }}
-            >
-              Try now <ArrowRightIcon />
-            </motion.button>
+            <button className="text-lg sm:text-xl lg:text-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-6 sm:px-8 cursor-pointer py-2 rounded-full z-10 text-white/80 w-full sm:w-auto">
+              Try now{" "}
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-7 lg:h-7" />
+            </button>
           </a>
-        </motion.div>
+        </div>
       </section>
 
-      <section
-        ref={meridiaRef}
-        className="h-screen flex flex-col items-center justify-center relative overflow-hidden bg-emerald-400"
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <PixelBlast
-            variant="circle"
-            pixelSize={6}
-            color="#B19EEF"
-            patternScale={3}
-            patternDensity={1.2}
-            pixelSizeJitter={0.5}
-            enableRipples
-            rippleSpeed={0.4}
-            rippleThickness={0.12}
-            rippleIntensityScale={1.5}
-            liquid
-            liquidStrength={0.12}
-            liquidRadius={1.2}
-            liquidWobbleSpeed={5}
-            speed={0.6}
-            edgeFade={0.25}
-            transparent
-          />
-        </div>
-
-        <motion.p
-          className="text-[20rem] font-employed select-none z-10 text-white"
-          style={{
-            y: yParallaxMeridia,
-          }}
-        >
+      <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-emerald-400 px-4 py-12">
+        <p className="text-6xl sm:text-8xl md:text-[12rem] lg:text-[15rem] xl:text-[20rem] font-employed select-none z-10 text-white text-center mb-4 sm:mb-8">
           Pressly
-        </motion.p>
+        </p>
 
-        <motion.p
-          className="text-[6rem] font-employed select-none text-center z-10 text-white/80"
-          style={{
-            y: yParallaxMeridia,
-            scale: scaleProgressMeridia,
-          }}
-        >
+        <p className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-employed select-none text-center z-10 text-white/80 mb-6 sm:mb-12 px-4">
           A powerful website builder.
-        </motion.p>
+        </p>
 
-        <motion.div className="flex items-center justify-center gap-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12">
           <a href="https://github.com/ridit-jangra/Pressly" target="_blank">
-            <motion.button
-              className="text-[2.5rem] rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white  font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 z-10"
-              style={{
-                y: yParallaxMeridia,
-              }}
-            >
-              Github <ArrowRightIcon />
-            </motion.button>
+            <button className="text-lg sm:text-xl lg:text-[2.5rem] rounded-full bg-white/10 backdrop-blur-3xl border border-white/20 text-white font-medium transition-all font-mono select-none flex items-center justify-center gap-2 px-6 sm:px-8 cursor-pointer py-2 z-10 w-full sm:w-auto">
+              Github{" "}
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-7 lg:h-7" />
+            </button>
           </a>
           <a href="https://pressly.ridit.space" target="_blank">
-            <motion.button
-              className="text-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-8 cursor-pointer py-2 rounded-full z-10 text-white/80"
-              style={{
-                y: yParallaxMeridia,
-              }}
-            >
-              Try now <ArrowRightIcon />
-            </motion.button>
+            <button className="text-lg sm:text-xl lg:text-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 transition-colors font-mono select-none flex items-center justify-center gap-2 px-6 sm:px-8 cursor-pointer py-2 rounded-full z-10 text-white/80 w-full sm:w-auto">
+              Try now{" "}
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-7 lg:h-7" />
+            </button>
           </a>
-        </motion.div>
+        </div>
       </section>
     </div>
   );
