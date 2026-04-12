@@ -36,12 +36,11 @@ export function Menu() {
         style={{ rotate }}
       >
         <motion.span className="absolute w-0.5 h-10 sm:h-12 lg:h-14 bg-black left-1/2 -translate-x-1/2"></motion.span>
-        <motion.span className="absolute w-0.5 h-10 sm:h-12 lg:h-14 bg-black left-1/2 -translate-x-1/2 rotate-[55deg] origin-center"></motion.span>
-        <motion.span className="absolute w-0.5 h-10 sm:h-12 lg:h-14 bg-black left-1/2 -translate-x-1/2 -rotate-[55deg] origin-center"></motion.span>
+        <motion.span className="absolute w-0.5 h-10 sm:h-12 lg:h-14 bg-black left-1/2 -translate-x-1/2 rotate-55 origin-center"></motion.span>
+        <motion.span className="absolute w-0.5 h-10 sm:h-12 lg:h-14 bg-black left-1/2 -translate-x-1/2 -rotate-55 origin-center"></motion.span>
       </motion.div>
 
       <div className="flex items-center relative gap-2 sm:gap-4">
-        {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-4 lg:gap-6">
           {menuItems.map((item, index) => (
             <a
@@ -63,7 +62,6 @@ export function Menu() {
           </a>
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden flex flex-col justify-center items-center w-8 h-8 sm:w-10 sm:h-10 gap-1.5"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -83,7 +81,6 @@ export function Menu() {
           />
         </button>
 
-        {/* Mobile Menu Overlay */}
         <motion.div
           initial={{ opacity: 0, x: "100%" }}
           animate={

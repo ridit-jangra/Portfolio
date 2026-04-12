@@ -5,15 +5,14 @@ import { gsap } from "gsap";
 import { useRouter } from "next/navigation";
 
 export interface ChromaItem {
-  image: string;
-  title: string;
-  subtitle: string;
+  name: string;
+  description: string;
   handle?: string;
   location?: string;
   borderColor?: string;
-  gradient?: string;
-  handleUrl?: string;
-  url?: string;
+  bg?: string;
+  github?: string;
+  website?: string;
 }
 
 export interface ChromaGridProps {
@@ -116,11 +115,12 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
         <article
           key={i}
           onMouseMove={handleCardMove}
-          className="group relative flex flex-col w-full rounded-4xl overflow-hidden border-2 border-transparent transition-colors duration-300 cursor-pointer"
+          className={`group relative flex flex-col w-full rounded-4xl overflow-hidden border-2 border-transparent transition-colors duration-300 cursor-pointer opacity-80`}
           style={
             {
               "--card-border": c.borderColor || "transparent",
-              background: c.gradient,
+              background: c.borderColor,
+              backgroundColor: c.bg,
               "--spotlight-color": "rgba(255,255,255,0.3)",
             } as React.CSSProperties
           }
@@ -133,27 +133,28 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
             }}
           />
           <div
-            className="relative z-10 flex-1 flex items-center box-border min-h-102 max-h-102"
-            onClick={() => handleCardClick(c.url)}
+            className={`relative z-10 flex-1 flex items-center justify-center box-border min-h-102 max-h-102`}
+            onClick={() => handleCardClick(`/projects/${c.name.toLowerCase()}`)}
           >
-            <img
+            {/* <img
               src={c.image}
               alt={c.title}
               loading="lazy"
               className="w-full h-full object-cover rounded-[10px] px-4"
-            />
+            /> */}
+            <span className="text-[28rem]">{c.name[0]}</span>
           </div>
-          <footer className="relative z-10 p-3 text-white font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1">
-            <h3 className="m-0 text-[1.05rem] font-semibold">{c.title}</h3>
+          <footer className="relative z-10 p-3 text-black font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1 mt-2">
+            <h3 className="m-0 text-[1.05rem] font-semibold">{c.name}</h3>
             {c.handle && (
               <span
                 className="text-[0.95rem] opacity-80 text-right hover:underline"
-                onClick={() => handleHandleClick(c.handleUrl)}
+                onClick={() => handleHandleClick(c.website)}
               >
                 {c.handle}
               </span>
             )}
-            <p className="m-0 text-[0.85rem] opacity-85">{c.subtitle}</p>
+            <p className="m-0 text-[0.85rem] opacity-85">{c.description}</p>
             {c.location && (
               <span className="text-[0.85rem] opacity-85 text-right">
                 {c.location}
@@ -162,32 +163,6 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
           </footer>
         </article>
       ))}
-      <div
-        className="absolute inset-0 pointer-events-none z-30"
-        style={{
-          backdropFilter: "grayscale(1) brightness(0.78)",
-          WebkitBackdropFilter: "grayscale(1) brightness(0.78)",
-          background: "rgba(0,0,0,0.001)",
-          maskImage:
-            "radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)",
-          WebkitMaskImage:
-            "radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)",
-        }}
-      />
-      <div
-        ref={fadeRef}
-        className="absolute inset-0 pointer-events-none transition-opacity duration-250 z-40"
-        style={{
-          backdropFilter: "grayscale(1) brightness(0.78)",
-          WebkitBackdropFilter: "grayscale(1) brightness(0.78)",
-          background: "rgba(0,0,0,0.001)",
-          maskImage:
-            "radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)",
-          opacity: 1,
-        }}
-      />
     </div>
   );
 };
