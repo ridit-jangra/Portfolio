@@ -4,14 +4,14 @@ export const projects = [
     description: "You code. AI assists.",
     bg: "#818cf8",
     repo: "https://github.com/ridit-jangra/Meridia",
-    website: "meridia.dev",
+    website: "https://meridia.dev",
   },
   {
     name: "Ink",
     description: "A story writing app.",
     bg: "#ffedd5",
     repo: "https://github.com/ridit-jangra/Ink",
-    website: "ink.ridit.space",
+    website: "https://ink.ridit.space",
   },
   {
     name: "Forge",
@@ -42,6 +42,6 @@ export const projects = [
     description: "A pixel perfect ui library.",
     bg: "#f87171",
     repo: "https://github.com/ridit-jangra/Frame",
-    website: "frame.ridit.space",
+    website: "https://frame.ridit.space",
   },
 ];
