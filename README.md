@@ -1,3 +1,18 @@
-# Portfolio
+# Ridit.space
 
-Just for fun.
+My personal developer portfolio — showcasing projects, and everything I’m building at ridit.space
+
+![Homepage](./public/preview.png)
+
+## Run locally
+
+```bash
+git clone https://github.com/ridit-jangra/Portfolio
+cd Portfolio
+npm install
+npm run dev
+```
+
+---
+
+Made with ❤️ by Ridit.
