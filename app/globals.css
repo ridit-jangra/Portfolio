@@ -136,3 +136,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+#page2 {
+  transform-style: preserve-3d;
+  transform-origin: left center;
+}
+#page2-front,
+#page2-back {
+  backface-visibility: hidden;
+}
+#page2-back {
+  transform: rotateY(180deg);
+}
+#page3 .reveal-content {
+  opacity: 0;
+  transition: opacity 0.6s 0.2s;
+}
+#page3.revealed .reveal-content {
+  opacity: 1;
+}
