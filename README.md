@@ -9,8 +9,8 @@ My personal developer portfolio — showcasing projects, and everything I’m bu
 ```bash
 git clone https://github.com/ridit-jangra/Portfolio
 cd Portfolio
-npm install
-npm run dev
+bun install
+bun dev
 ```
 
 ---

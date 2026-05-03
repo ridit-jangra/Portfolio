@@ -19,6 +19,20 @@ const projects = [
     image: "/meridia.png",
     link: "#",
   },
+  {
+    name: "Ink",
+    initial: "I",
+    description: "One place to store, edit and view your stories!",
+    image: "/ink.png",
+    link: "#",
+  },
+  {
+    name: "Portfolio",
+    initial: "P",
+    description: "My portfolio. You are looking it rn!",
+    image: "/portfolio-new.png",
+    link: "#",
+  },
 ];
 
 const words = "My latest projects!".split(" ");
@@ -95,6 +109,16 @@ export function Work() {
             </div>
           </motion.div>
         ))}
+        <span className="text-2xl font-inter font-medium">
+          Much more!! in{" "}
+          <a
+            href="https://github.com/ridit-jangra"
+            target="blank"
+            className="text-indigo-400 hover:underline"
+          >
+            github
+          </a>
+        </span>
       </div>
     </section>
   );
