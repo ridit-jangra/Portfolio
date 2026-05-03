@@ -11,11 +11,6 @@ export function Menu() {
 
   const menuItems = [
     { label: "Home", ariaLabel: "Go to home page", link: "/" },
-    {
-      label: "Projects",
-      ariaLabel: "Learn about our projects",
-      link: "/projects",
-    },
   ];
 
   const socialItems = [
