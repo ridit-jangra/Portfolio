@@ -8,7 +8,7 @@ export default function Page() {
     <div className="min-h-screen w-full bg-[#F6AB00] pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between mb-8 sm:mb-12">
         <div className="flex items-center">
-          <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-employed">
+          <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
             Projects
           </p>
         </div>
