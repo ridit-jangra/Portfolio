@@ -6,6 +6,12 @@ import { useEffect, useState } from "react";
 
 const words = "About me now!".split(" ");
 
+const socialItems = [
+  { label: "GitHub", link: "https://github.com/ridit-jangra" },
+  { label: "X", link: "https://x.com/ridit_jangra" },
+  { label: "Insta", link: "https://instagram.com/ridit.jangra" },
+];
+
 const slides = [
   {
     image: "/illustrations/adventure.svg",
@@ -277,29 +283,36 @@ export function About() {
         <span className="flex items-center gap-3 sm:gap-4">
           <Send size={28} className="sm:hidden shrink-0" />
           <Send size={38} className="hidden sm:block shrink-0" />
-          <p
+          <a
+            href="mailto:riditjangra09@gmail.com"
             className="font-inter font-medium"
             style={{ fontSize: "clamp(1rem, 2.5vw, 2rem)" }}
           >
             riditjangra09@gmail.com
-          </p>
+          </a>
         </span>
         <div className="flex items-center gap-3">
-          <img
-            src="/instagram.png"
-            alt="instagram"
-            className="w-10 sm:w-15 h-auto cursor-pointer hover:scale-110 transition-all rotate-2"
-          />
-          <img
-            src="/github.png"
-            alt="github"
-            className="w-10 sm:w-15 h-auto cursor-pointer hover:scale-110 transition-all -rotate-3"
-          />
-          <img
-            src="/twitter.png"
-            alt="twitter"
-            className="w-10 sm:w-15 h-auto cursor-pointer hover:scale-110 transition-all rotate-15"
-          />
+          <a href={socialItems[2].link} target="_blank group">
+            <img
+              src="/instagram.png"
+              alt="instagram"
+              className="w-10 sm:w-15 h-auto cursor-pointer hover:scale-110 transition-all rotate-2 hover:-translate-y-5 hover:rotate-15"
+            />
+          </a>
+          <a href={socialItems[0].link} target="_blank group">
+            <img
+              src="/github.png"
+              alt="github"
+              className="w-10 sm:w-15 h-auto cursor-pointer hover:scale-110 transition-all -rotate-3 hover:-translate-y-5 hover:-rotate-15"
+            />
+          </a>
+          <a href={socialItems[1].link} target="_blank group">
+            <img
+              src="/twitter.png"
+              alt="twitter"
+              className="w-10 sm:w-15 h-auto cursor-pointer hover:scale-110 transition-all rotate-15 hover:-translate-y-5 hover:rotate-30"
+            />
+          </a>
         </div>
       </div>
     </section>

@@ -16,7 +16,7 @@ export function Menu() {
   const socialItems = [
     { label: "GitHub", link: "https://github.com/ridit-jangra" },
     { label: "X", link: "https://x.com/ridit_jangra" },
-    { label: "Insta", link: "https://instagram.com/" },
+    { label: "Insta", link: "https://instagram.com/ridit.jangra" },
   ];
 
   return (

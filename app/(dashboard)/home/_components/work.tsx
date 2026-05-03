@@ -126,7 +126,7 @@ export function Work() {
         ))}
 
         <span className="text-lg sm:text-2xl font-inter font-medium">
-          Much more!! in{" "}
+          Much more!! on{" "}
           <a
             href="https://github.com/ridit-jangra"
             target="_blank"
