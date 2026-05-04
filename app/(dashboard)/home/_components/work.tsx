@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const projects = [
   {
@@ -10,34 +11,36 @@ const projects = [
     description:
       "Milo is your cat buddy that codes with you, builds with you, ships with you and talks with you.",
     image: "/milo.png",
-    link: "#",
+    // link: "#",
   },
   {
     name: "Meridia (Archieved)",
     initial: "M",
     description: "Archived.",
     image: "/meridia.png",
-    link: "#",
+    // link: "#",
   },
   {
     name: "Ink",
     initial: "I",
     description: "One place to store, edit and view your stories!",
     image: "/ink.png",
-    link: "#",
+    // link: "#",
   },
   {
     name: "Portfolio",
     initial: "P",
     description: "My portfolio. You are looking it rn!",
     image: "/portfolio-new.png",
-    link: "#",
+    // link: "#",
   },
 ];
 
 const words = "My latest projects!".split(" ");
 
 export function Work() {
+  const router = useRouter();
+
   return (
     <section className="relative w-full px-4 sm:px-10 lg:px-20 mt-24 sm:mt-48 lg:mt-80">
       <p className="hidden sm:block text-zinc-400 text-lg sm:text-2xl absolute -top-8 sm:-top-10 right-4 sm:right-24 lg:right-90 rotate-3 font-finger-paint">
@@ -79,6 +82,9 @@ export function Work() {
               ease: [0.34, 1.56, 0.64, 1],
             }}
             className="relative bg-[#f3f3f3] rounded-3xl sm:rounded-4xl w-full p-5 sm:p-8 **:font-inter group cursor-pointer"
+            onClick={() => {
+              router.push(`/projects/${project.name.toLowerCase()}`);
+            }}
           >
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl sm:rounded-4xl pointer-events-none"
@@ -101,7 +107,7 @@ export function Work() {
                 </p>
               </div>
               <a
-                href={project.link}
+                // href={`/projects/${project.name}`}
                 className="shrink-0 ml-2 sm:absolute sm:right-8 transition-transform duration-200 group-hover:-translate-y-2 sm:group-hover:-translate-y-3 group-hover:translate-x-2 sm:group-hover:translate-x-3"
               >
                 <ArrowUpRight size={32} className="sm:hidden" />

@@ -174,7 +174,7 @@ export function About() {
             duration: 0.5,
             ease: [0.34, 1.56, 0.64, 1],
           }}
-          className="bg-[#f3f3f3] h-screen flex items-center justify-center w-full rounded-3xl sm:rounded-4xl p-8 relative overflow-hidden"
+          className="bg-[#f3f3f3] min-h-[480px] sm:min-h-[680px] lg:h-screen flex items-center justify-center w-full rounded-3xl sm:rounded-4xl p-8 relative overflow-hidden"
         >
           {[
             {

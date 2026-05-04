@@ -2,19 +2,36 @@
 
 import CountUp from "@/components/CountUp";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
 
 export function Hero() {
   const [age, setAge] = useState<number | null>(null);
+  const isMobile = useIsMobile();
+
+  const gradients = isMobile
+    ? [
+        "radial-gradient(ellipse 0% 20% at 50% 150%, #ffe600 0%, #fecc1f 10%, #fde75e 60%, #ffffff 100%)",
+        "radial-gradient(ellipse 120% 45% at 50% -10%, #ffe600 0%, #fecc1f 10%, #fde75e 50%, #ffffff 100%)",
+      ]
+    : [
+        "radial-gradient(ellipse 0% 30% at 50% 150%, #ffe600 0%, #fecc1f 10%, #fde75e 60%, #ffffff 100%)",
+        "radial-gradient(ellipse 70% 80% at 50% -10%, #ffe600 0%, #fecc1f 10%, #fde75e 50%, #ffffff 100%)",
+      ];
 
   return (
     <motion.div
-      animate={{
-        background: [
-          "radial-gradient(ellipse 40% 40% at 50% 150%, #ffe600 0%, #fecc1f 10%, #fde75e 60%, #ffffff 100%)",
-          "radial-gradient(ellipse 70% 80% at 50% -10%, #ffe600 0%, #fecc1f 10%, #fde75e 50%, #ffffff 100%)",
-        ],
-      }}
+      animate={{ background: gradients }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="w-screen h-screen relative overflow-hidden mb-5"
     >
