@@ -16,7 +16,7 @@ const projects = [
   {
     name: "Meridia (Archieved)",
     initial: "M",
-    description: "Archived.",
+    description: "Not a VSCode fork btw.",
     image: "/meridia.png",
     // link: "#",
   },
