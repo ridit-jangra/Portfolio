@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { desc } from "framer-motion/client";
 import { ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -32,6 +33,14 @@ const projects = [
     initial: "P",
     description: "My portfolio. You are looking it rn!",
     image: "/portfolio-new.png",
+    // link: "#",
+  },
+  {
+    name: "EcliSystems",
+    initial: "E",
+    description:
+      "The frontend is written by me, someone else manages the backend. Eclisystems is a service to host your applications.",
+    image: "/eclisystems.png",
     // link: "#",
   },
 ];

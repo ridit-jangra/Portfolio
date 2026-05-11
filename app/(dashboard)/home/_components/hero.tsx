@@ -61,14 +61,9 @@ export function Hero() {
                 setAge(e.target.value ? Number(e.target.value) : null)
               }
               placeholder="11"
-              className="text-gray-700 focus:outline-none w-full bg-transparent"
+              className="text-gray-700 focus:outline-none w-min z-100"
               style={{ fontSize: "inherit" }}
             />
-            <span
-              className={`absolute text-gray-700 top-0 left-0 ${age === null && "animate-caret-blink"}`}
-            >
-              __
-            </span>
           </span>
         </p>
 
