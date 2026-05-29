@@ -44,4 +44,10 @@ export const projects = [
     repo: "https://github.com/ridit-jangra/Frame",
     website: "https://frame.ridit.space",
   },
+  {
+    name: "Pixl",
+    description: "A pixelated YSWS!",
+    bg: "#F5EED2",
+    website: "https://pixl.rsvp",
+  },
 ];

@@ -43,6 +43,14 @@ const projects = [
     image: "/eclisystems.png",
     // link: "#",
   },
+  {
+    name: "Pixl",
+    description: "A pixelated YSWS!",
+    // bg: "#F5EED2",
+    // website: "https://pixl.rsvp",
+    initial: "P",
+    image: "./pixl.png",
+  },
 ];
 
 const words = "My latest projects!".split(" ");
