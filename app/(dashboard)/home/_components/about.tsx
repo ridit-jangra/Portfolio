@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -98,8 +99,8 @@ export function About() {
               style={{ fontSize: "clamp(0.95rem, 2vw, 1.375rem)" }}
             >
               My journey as a coder started all the way back in COVID, the first
-              thing I coded was a simple HTML page with the help of my sister's
-              computer book.
+              thing I coded was a simple HTML page with the help of my
+              sister&apos;s computer book.
               <br />
               <br />
               Five years later, here i am with Milo, Meridia and tons of more
@@ -174,7 +175,7 @@ export function About() {
             duration: 0.5,
             ease: [0.34, 1.56, 0.64, 1],
           }}
-          className="bg-[#f3f3f3] min-h-[480px] sm:min-h-[680px] lg:h-screen flex items-center justify-center w-full rounded-3xl sm:rounded-4xl p-8 relative overflow-hidden"
+          className="bg-[#f3f3f3] min-h-120 sm:min-h-170 lg:h-screen flex items-center justify-center w-full rounded-3xl sm:rounded-4xl p-8 relative overflow-hidden"
         >
           {[
             {
@@ -238,6 +239,13 @@ export function About() {
               alt: "joker-its-you-:)",
               className:
                 "absolute w-[14vw] sm:w-[10vw] lg:w-50 h-auto left-0 z-2 -rotate-3 top-0",
+              delay: 2,
+            },
+            {
+              src: "/pixl.png",
+              alt: "pixl",
+              className:
+                "absolute w-[14vw] sm:w-[40vw] lg:w-200 h-auto -left-100 z-2 -rotate-3 top-100",
               delay: 2,
             },
           ].map((img) => (

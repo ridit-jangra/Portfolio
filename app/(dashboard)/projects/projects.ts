@@ -49,5 +49,12 @@ export const projects = [
     description: "A pixelated YSWS!",
     bg: "#F5EED2",
     website: "https://pixl.rsvp",
+    repo: "https://github.com/Pixl-YSWS",
+  },
+  {
+    name: "Echo",
+    description: "Echo is jarvis :D. jarvis is echo :D",
+    bg: "#F5EED2",
+    repo: "https://github.com/ridit-jangra/Echo",
   },
 ];

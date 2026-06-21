@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { motion } from "framer-motion";
-import { desc } from "framer-motion/client";
 import { ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -15,7 +15,7 @@ const projects = [
     // link: "#",
   },
   {
-    name: "Meridia (Archieved)",
+    name: "Meridia",
     initial: "M",
     description: "Not a VSCode fork btw.",
     image: "/meridia.png",
@@ -50,6 +50,14 @@ const projects = [
     // website: "https://pixl.rsvp",
     initial: "P",
     image: "./pixl.png",
+  },
+  {
+    name: "Echo",
+    description: "Vibe talking!",
+    // bg: "#F5EED2",
+    // website: "https://pixl.rsvp",
+    initial: "E",
+    image: "./echo.png",
   },
 ];
 
