@@ -48,8 +48,8 @@ export const projects = [
     name: "Pixl",
     description: "A pixelated YSWS!",
     bg: "#F5EED2",
-    website: "https://pixl.rsvp",
-    repo: "https://github.com/Pixl-YSWS",
+    website: "https://pixl.hackclub.com",
+    repo: "https://github.com/hackclub/pixl",
   },
   {
     name: "Echo",
