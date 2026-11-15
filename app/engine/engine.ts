@@ -84,6 +84,8 @@ export class AnimalEngine {
     this.flock = new Flock(this.animal, this.tuning, this.count);
     this.renderer.setAnimal(this.animal, this.tuning);
     this.resize();
+    // Resizing clears the canvas; repaint now so no blank frame is shown before the next tick.
+    if (!this.reducedMotion.matches) this.renderer.render(this.flock, STEP);
   }
 
   set(key: string, value: number | boolean) {
