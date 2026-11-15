@@ -50,3 +50,7 @@
 /* no fill on hover; the label just brightens */
 .btn-tui .btn-tui-label { color: rgb(255 255 255 / .7); }
 .btn-tui:hover .btn-tui-label, .btn-tui:focus-visible .btn-tui-label { color: #fff; }
+
+/* name size: scales with width; on portrait screens the wide letters must still fit */
+.name-box { --fs: clamp(3px, 0.85vw, 14px); }
+@media (orientation: portrait) { .name-box { --fs: clamp(4px, 1.45vw, 12px); } }

@@ -212,12 +212,14 @@ export default function Home() {
     const fit = () => {
       const box = nameBox.current, pre = box?.firstElementChild as HTMLElement | null;
       if (!box) return;
-      // width of one monospace cell, from the pre's own font (its text may be trimmed, so don't measure the box)
+      // width of one rendered monospace cell, read from the pre's own text so font + size are exact
       let cell = 0;
-      if (pre) {
-        const cs = getComputedStyle(pre);
-        const ctx = document.createElement("canvas").getContext("2d");
-        if (ctx) { ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`; cell = ctx.measureText("M").width; }
+      const text = pre?.firstChild;
+      if (text && text.nodeType === Node.TEXT_NODE && (text.textContent?.length ?? 0) > 1) {
+        const range = document.createRange();
+        range.setStart(text, 0);
+        range.setEnd(text, 1);
+        cell = range.getBoundingClientRect().width;
       }
       const w = cell * dissolve.meta.cols;
       if (w < 50) {
@@ -261,7 +263,7 @@ export default function Home() {
           <div className="relative isolate w-fit">
             <div className="text-halo" style={{ opacity: "var(--vis, 0)" }} aria-hidden="true" />
             {/* the piece's frame is 13 rows but the letters fill ~8, so crop the empty rows below */}
-            <div ref={nameBox} style={{ ["--fs" as string]: "clamp(3px, 0.85vw, 14px)", fontSize: "var(--fs)", height: "calc(var(--fs) * 1.2 * 9.5)", overflow: "hidden" }}>
+            <div ref={nameBox} className="name-box" style={{ fontSize: "var(--fs)", height: "calc(var(--fs) * 1.2 * 9.5)", overflow: "hidden" }}>
               {/* keyed so each project gets a fresh piece that un-dissolves into its own name */}
               <Ascii key={project.name} piece={namePiece} style={{ fontSize: "var(--fs)", lineHeight: 1.2, margin: 0 }} options={nameOptions} />
             </div>
@@ -280,7 +282,7 @@ export default function Home() {
             style={{ opacity: 0 }}
           >
             {SHOWN.map((p, i) => p.image && (
-              <Image key={p.name} src={p.image} alt={`${p.name} preview`} fill sizes="100vw" priority className="object-cover object-top-left" style={{ opacity: i === index ? 1 : 0 }} />
+              <Image key={p.name} src={p.image} alt={`${p.name} preview`} fill sizes="100vw" priority className="object-cover object-top-left portrait:object-contain portrait:object-center" style={{ opacity: i === index ? 1 : 0 }} />
             ))}
           </div>
           {links.length > 0 && (
