@@ -1,0 +1,12 @@
+.glass {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.liquid .glass {
+  -webkit-backdrop-filter: url(#liquid-glass);
+  backdrop-filter: url(#liquid-glass);
+}

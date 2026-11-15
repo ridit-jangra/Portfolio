@@ -351,7 +351,9 @@ export class AsciiRenderer {
     ctx.drawImage(this.bg, 0, 0);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+    ctx.globalAlpha = 1 - Number(this.tuning.scrollDissolve ?? 0);
     this.drawTrail(flock.time);
+    ctx.globalAlpha = 1;
 
     ctx.font = `600 ${Math.round(ch * 0.74)}px ${this.fontFamily}`;
     ctx.textAlign = "center";
@@ -618,21 +620,27 @@ export class AsciiRenderer {
 
   private drawCells() {
     const { ctx, cols, rows, cw, ch, cellFlag, cellFill, cellColor, cellGlyph } = this;
+    const progress = Number(this.tuning.scrollDissolve ?? 0);
     const n = cols * rows;
     for (let i = 0; i < n; i++) {
       const flag = cellFlag[i];
       if (!flag) continue;
+      const grain = hash3(i % cols, (i / cols) | 0, 731);
+      const erosion = Math.max(0, Math.min(1, (progress - grain * 0.65) / 0.35));
+      if (erosion >= 1) continue;
+      ctx.globalAlpha = 1 - erosion;
       const x = (i % cols) * cw;
-      const y = ((i / cols) | 0) * ch;
-      if (flag === CELL_SOLID) {
+      const y = ((i / cols) | 0) * ch + erosion * erosion * ch * 5;
+      if (flag === CELL_SOLID && erosion < 0.35) {
         const f = cellFill[i];
         ctx.fillStyle = rgb(f >>> 16, (f >>> 8) & 255, f & 255);
         ctx.fillRect(x + 1, y + 1, cw - 1, ch - 1);
       }
       const g = cellColor[i];
       ctx.fillStyle = rgb(g >>> 16, (g >>> 8) & 255, g & 255);
-      ctx.fillText(String.fromCharCode(cellGlyph[i]), x + cw / 2, y + ch / 2 + 1);
+      ctx.fillText(erosion > 0.35 ? "·" : String.fromCharCode(cellGlyph[i]), x + cw / 2, y + ch / 2 + 1);
     }
+    ctx.globalAlpha = 1;
   }
 }
 

@@ -1,5 +1,5 @@
 /**
- * Blue morpho butterflies on migration.
+ * Peach-pink butterflies on migration.
  *
  * Wings are seen from above. Each lobe (forewing, hindwing) is a fan in polar
  * coordinates around its root on the body, so an outline is just a radius per
@@ -102,7 +102,7 @@ const DEFAULTS = {
 export const butterflies: Animal<Butterfly> = {
   key: "butterflies",
   label: "Butterfly",
-  swatch: [50, 135, 255],
+  swatch: [255, 145, 145],
   defaults: DEFAULTS,
   controls: [
     ["Flight", [
@@ -114,7 +114,7 @@ export const butterflies: Animal<Butterfly> = {
   area: 48000,
   scale: 1,
   speed: 90,
-  trail: { light: [70, 118, 226], dark: [96, 156, 255] },
+  trail: { light: [226, 118, 110], dark: [255, 156, 150] },
 
   create: (c) => ({ ...c, phase: rand(0, TAU), open: 1, glide: 0, glideUntil: 0, flutterX: 0, flutterY: 0 }),
 
@@ -189,11 +189,11 @@ export const butterflies: Animal<Butterfly> = {
       const { t, r } = lobe;
       // Black margin with white spots on the forewing, dark roots and leading edge, shimmering blue.
       if (r > 0.86) {
-        if (part === 0 && r < 0.95 && Math.abs(frac(t * 5) - 0.5) < 0.14) ink(ink$, 236, 240, 255, INK_SPOT);
-        else ink(ink$, 22, 28, 62, INK_DARK);
-      } else if (r < 0.08) ink(ink$, 26, 44, 110, INK_DARK);
-      else if (part === 0 && t > 0.9) ink(ink$, 30, 50, 120, INK_DARK);
-      else ink(ink$, 50 + 70 * r, 135 + 60 * r, 255, INK_SHIMMER);
+        if (part === 0 && r < 0.95 && Math.abs(frac(t * 5) - 0.5) < 0.14) ink(ink$, 255, 240, 232, INK_SPOT);
+        else ink(ink$, 62, 28, 35, INK_DARK);
+      } else if (r < 0.08) ink(ink$, 110, 44, 50, INK_DARK);
+      else if (part === 0 && t > 0.9) ink(ink$, 120, 50, 58, INK_DARK);
+      else ink(ink$, 255, 120 + 45 * r, 130 + 15 * r, INK_SHIMMER);
       return true;
     }, { light: 0.6 + 0.4 * b.open, tilt: b.open * 3 });
 
