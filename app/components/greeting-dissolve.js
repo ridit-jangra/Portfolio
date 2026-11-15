@@ -72,8 +72,20 @@ function seg(x, y, ax, ay, bx, by) {
     const k = l ? Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l)) : 0;
     return Math.hypot(x - ax - k * dx, y - ay - k * dy) - (dx && dy ? RD : R);
 }
-/** @param {{ words?: string[] | string, scrollProgress?: () => number }} [options] */
-export default function dissolve({ words = meta.options.words, scrollProgress = () => 0 } = {}) {
+/** Columns of the 128-wide frame that a single word's ink spans (plus a little margin). */
+export function wordCols(word) {
+    const w = [...String(word).toUpperCase()];
+    const gl = (ch) => STROKES[ch] || (ch === " " ? [] : STROKES["?"]);
+    const sp = (g) => {
+        const xs = g.flatMap((p) => p.filter((_, i) => i % 2 === 0));
+        return xs.length ? [Math.min(...xs), Math.max(...xs)] : [0, 2];
+    };
+    const gap = Math.max(2, Math.round(GAP));
+    const total = w.reduce((a, ch) => a + Math.round(2 * (sp(gl(ch))[1] - sp(gl(ch))[0])) + gap, 0) - gap + 4 * R;
+    return Math.min(meta.cols, Math.ceil(total) + 6);
+}
+/** @param {{ words?: string[] | string, scrollProgress?: () => number, align?: "center" | "start" }} [options] */
+export default function dissolve({ words = meta.options.words, scrollProgress = () => 0, align = "center" } = {}) {
     const { cols, rows } = meta;
     const given = (Array.isArray(words) ? words : String(words).split(/[,\s]+/)).filter(Boolean);
     const list = (given.length ? given : ["hello"]).map((w) => [...String(w).toUpperCase()]);
@@ -93,8 +105,8 @@ export default function dissolve({ words = meta.options.words, scrollProgress = 
     const baked = list.map((w) => {
         const cover = new Float32Array(cols * rows);
         const slot = new Int8Array(cols);
-        const y0 = rows / 2 - 3 * unit;
-        let pen = Math.round((cols - wide(w, unit)) / 2 + 2 * unit * R);
+        const y0 = align === "start" ? 1 : rows / 2 - 3 * unit;
+        let pen = align === "start" ? Math.round(2 * unit * R) + 1 : Math.round((cols - wide(w, unit)) / 2 + 2 * unit * R);
         const centres = [];
         for (const ch of w) {
             const g = glyph(ch);
@@ -144,6 +156,7 @@ export default function dissolve({ words = meta.options.words, scrollProgress = 
         // Scrub the same staggered erosion and falling dust used between words.
         const tau = progress > 0
             ? progress * ((list[n].length - 1) * STAGGER + JITTER + ERODE + 1.2)
+            : list.length === 1 ? 0 // a lone word just rests; it only dissolves with scrollProgress
             : u - n * (HOLD + TRANS) - HOLD;
         const A = baked[n], B = baked[(n + 1) % list.length];
         dust.fill(0);

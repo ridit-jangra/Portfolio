@@ -10,3 +10,43 @@
   -webkit-backdrop-filter: url(#liquid-glass);
   backdrop-filter: url(#liquid-glass);
 }
+
+/* full-screen glass pane over the cranes: same refraction as the hero text, no border or radius */
+.liquid .glass.glass-box {
+  position: fixed; inset: 0; /* out of the flex flow so the hello stays centered */
+  -webkit-backdrop-filter: url(#liquid-glass) blur(1.5px);
+  backdrop-filter: url(#liquid-glass) blur(1.5px);
+  background: rgba(255,255,255,.025);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* Local, stronger refraction + blur right around text. Full strength under the text itself,
+   feathered to nothing 32px away, so it never reaches far from the words. */
+.liquid .text-halo {
+  --f: 32px;
+  position: absolute; inset: calc(var(--f) * -1); z-index: -1; pointer-events: none;
+  -webkit-backdrop-filter: url(#liquid-glass-strong) blur(6px);
+  backdrop-filter: url(#liquid-glass-strong) blur(6px);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--f), #000 calc(100% - var(--f)), transparent),
+                      linear-gradient(to bottom, transparent, #000 var(--f), #000 calc(100% - var(--f)), transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 var(--f), #000 calc(100% - var(--f)), transparent),
+              linear-gradient(to bottom, transparent, #000 var(--f), #000 calc(100% - var(--f)), transparent);
+  mask-composite: intersect;
+}
+
+/* TUI buttons: two blocks, each 50% of the width, brackets at the far sides.
+   The tint/fill live on the label (above the refraction halo) so the halo can't warp them. */
+.btn-tui { color: #fff; text-decoration: none; cursor: pointer; outline: none; }
+.btn-tui .text-halo { opacity: var(--last, 0); }
+.btn-tui-label {
+  position: relative; display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 24px; white-space: pre;
+  opacity: var(--last, 0);
+  background: transparent;
+  transition: background .2s, color .2s;
+}
+/* no fill on hover; the label just brightens */
+.btn-tui .btn-tui-label { color: rgb(255 255 255 / .7); }
+.btn-tui:hover .btn-tui-label, .btn-tui:focus-visible .btn-tui-label { color: #fff; }
